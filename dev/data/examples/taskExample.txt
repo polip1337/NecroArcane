@@ -1,0 +1,332 @@
+{
+    // Unique identifier for the task. Required for all tasks.
+    "id": "example_task_id",
+    
+    // Display name of the task. Often used in UI.
+    "name": "Example Task Name",
+    
+    // Short description of the task.
+    "desc": "This is a comprehensive example task incorporating all possible fields from the provided tasks.json.",
+    
+    // Extended description, used for more detailed explanations.
+    "extdesc": "Additional details or warnings about the task.",
+    
+    // Verb form of the action, e.g., for progress display like "performing".
+    "verb": "examplifying",
+    
+    // Action name, sometimes used as an alternative display name.
+    "actname": "Perform Example Action",
+    
+    // Flavor text for thematic or humorous purposes.
+    "flavor": "This task demonstrates everything possible.",
+    
+    // Group category for organizing tasks (e.g., "affluence", "research", "housing").
+    "group": "example_group",
+    
+    // Tags for classification (e.g., "t_craftwork", "t_evilact"). Can be a string or potentially an array.
+    "tags": "t_example_tag",
+    
+    // Alias for the task, possibly for referencing in other systems.
+    "alias": "a_example",
+    
+    // Slot for tasks that fit into specific categories like "rest".
+    "slot": "example_slot",
+    
+    // Requirements as a string expression (e.g., "g.trickery>=4").
+    "require": "g.example>=1&&g.another>0",
+    
+    // Need: Conditions or prerequisites (string or array, e.g., "plantsource" or ["workspace", "potsource"]).
+    "need": ["example_need1", "example_need2"],
+    
+    // Text explanation for the need condition.
+    "needtext": "Must have example_need1 and example_need2.",
+    
+    // Resources or skills that this task fills or affects (string or array).
+    "fill": ["example_fill1", "example_fill2"],
+    
+    // Whether the task is locked initially.
+    "locked": false,
+    
+    // Whether the task is owned or available by default.
+    "owned": true,
+    
+    // Indicates if the task can run indefinitely.
+    "perpetual": true,
+    
+    // Maximum times the task can be completed.
+    "max": 1,
+    
+    // Duration in ticks or units.
+    "length": 50,
+    
+    // One-time costs to start the task (object with resource keys).
+    "cost": {
+      "stamina": 2,
+      "mana": 1,
+      "gold": 100,
+      "research": 50,
+      "arcana": 1,
+      "herbs": 5,
+      "gems": 10,
+      "runestones": 3,
+      "codices": 1,
+      "tomes": 1,
+      "scrolls": 5,
+      "bodies": 1,
+      "timegem": 1,
+      "sindel": 1,
+      "deepsteel": 1,
+      "ichor": 1,
+      "managem": 4,
+      "firegem": 5,
+      "watergem": 2,
+      "airgem": 2,
+      "earthgem": 3,
+      "naturegem": 1,
+      "lightgem": 0.5,
+      "shadowgem": 2,
+      "spiritgem": 2,
+      "chaosgem": 3,
+      "firerune": 2,
+      "waterrune": 0.025,
+      "airrune": 0.025,
+      "earthrune": 5,
+      "stress": -2,  // Negative costs can represent gains, but typically positive for deductions.
+      "virtue": -3,
+      "evilamt": 5,
+      "hp": 10
+    },
+    
+    // Per-tick or ongoing costs/effects during the task run (object).
+    "run": {
+      "stamina": 0.4,
+      "mana": 0.2,
+      "gold": 8,
+      "research": 1,
+      "arcana": 0.02,
+      "herbs": 1.4,
+      "nature": 0.5,
+      "fire": 0.1,
+      "water": 0.1,
+      "air": 0.1,
+      "earth": 0.1,
+      "spirit": 0.1,
+      "shadow": 0.5,
+      "light": 0.5,
+      "chaos": 0.2,
+      "tempus": 0.1,
+      "hp": 1,
+      "naturegem": 0.33,
+      "gems": 0.5,
+      "spiritgem": 1,
+      "watergem": 0.5,
+      "earthgem": 0.375,
+      "airgem": 0.05,
+      "scrolls": 0.1,
+      "managem": 0.5
+    },
+    
+    // One-time results upon completion (object with gains).
+    "result": {
+      "gold": 4,
+      "gems": "4~10",  // Can be a range string.
+      "virtue": 5,
+      "evilamt": -3,
+      "research": 50,
+      "arcana": 0.25,
+      "scrolls": 1,
+      "codices": 1,
+      "tomes": 1,
+      "runestones": 1,
+      "herbs": 2,
+      "bodies": 1,
+      "dreams": 1,
+      "fame": 1,
+      "offlinetime": 1,
+      "tempus": 2,
+      "stress": -2
+    },
+    
+    // Ongoing or periodic effects (object).
+    "effect": {
+      "research": 1.5,
+      "arcana": 0.01,
+      "gold": "0.5~1",  // Range string.
+      "herbs": 0.2,
+      "virtue": 0.3,
+      "animals.exp": 0.2,
+      "naturelore.exp": 0.2,
+      "herbalism.exp": "g.herbalism.rate*0.1",
+      "alchemy.exp": "g.alchemy.rate*0.1",
+      "potions.exp": "g.potions.rate*0.1",
+      "potions.max": 0.0001,
+      "elemental.exp": 0.2,
+      "elemental.rate": 0.01,
+      "scrying.exp": "g.scrying.rate*0.2",
+      "trickery.exp": "g.trickery.rate*0.2",
+      "divination.exp": "g.divination.rate*0.2",
+      "conjuration.exp": 2,
+      "lore.exp": 0.5,
+      "player.exp": 0.5,
+      "s_travel.exp": 2,
+      "prismatic": 0.5,
+      "fundamental": 0.5,
+      "stamina": 0.8,
+      "vigor": 0.08,
+      "hp": 1,
+      "stress": -1,
+      "dreams": 0.0003,
+      "gems.max": 0.0002,
+      "prismaticgems.max": 0.0002,
+      "earthgem": 0.01
+    },
+    
+    // Milestones where effects change (object with numeric keys for completion counts).
+    "at": {
+      "5": {
+        "result.gold": 1
+      },
+      "25": {
+        "result.gold": 1
+      },
+      "500": {
+        "result.virtue": -0.3
+      }
+    },
+    
+    // Periodic effects every N completions (object with numeric keys).
+    "every": {
+      "10": {
+        "effect.gold": "0.01:10"  // Format like "value:cap".
+      },
+      "100": {
+        "effect.research": "0.05:100"
+      }
+    },
+    
+    // Modifications to game stats or other tasks (complex object).
+    "mod": {
+      "research.max": 25,
+      "research.rate": 0.07,
+      "arcana.rate": 0.005,
+      "lore.mod.arcana.max": 0.5,
+      "lore.mod.spelllist.max": 0.5,
+      "smith_work.length": -3,
+      "trickery.max": "0.05//100/-10",  // Formula string.
+      "weaving.max": "?1",  // Conditional or random.
+      "alchemy.max": "0.001//3000/-1",
+      "firelore.max": "0.001//3000/-1",
+      "waterlore.max": "0.001//3000/-1",
+      "earthlore.max": "0.001//3000/-1",
+      "airlore.max": "0.001//3000/-1",
+      "geosculpting.max": "0.01//1400/-10",
+      "geosculpting.rate": "0.005//1400/-10",
+      "naturelore.max": "0.0024//1250/-10",
+      "scrolls.rate": 0.02,
+      "codices.rate": 0.01,
+      "tomes.rate": 0.005,
+      "unendingscroll.mod.scrolls.rate.base": "50%",
+      "unendingcodex.mod.codices.rate.base": "50%",
+      "spelldmg": 5,
+      "physdmg": 5,
+      "player.tohit": 1,
+      "player.resist.shadow": 10,
+      "spirit.rate": 0.1,
+      "shadow.rate": 0.1,
+      "arcana.max": 2,
+      "arcana.rate": 0.02,
+      "spellcraft.max": 1,
+      "spellcraft.rate": 0.5,
+      "languages.max": 1,
+      "languages.rate": 0.1,
+      "crafting.max": 1,
+      "crafting.rate": 0.1,
+      "history.max": 1,
+      "history.rate": 0.1,
+      "spiritlore.max": 2,
+      "spiritlore.rate": 0.2,
+      "summoning.max": 2,
+      "summoning.rate": 0.2,
+      "animals.max": 2,
+      "animals.rate": 0.2,
+      "magicbeasts.max": 1,
+      "herbalism.max": 1,
+      "anatomy.max": 3,
+      "anatomy.rate": 0.6,
+      "heallore.max": 1,
+      "encounter.effect.research": 1,
+      "encounter.effect.runner.skillprogress": 0.2,
+      "s_travel.rate": 0.5,
+      "chaosgem.max": 10,
+      "chaosrune.max": 5,
+      "allies.max": 10,
+      "ancientruins.mod": {  // Nested mods for specific locations or tasks.
+        "space.max": 250
+      },
+      "academy.mod": {
+        "space.max": 225
+      },
+      "citadel.mod": {
+        "space.max": 240
+      },
+      "temple.mod": {
+        "space.max": 80
+      },
+      "templerenovation.max": -1,
+      "grove.mod.space.max": 100,
+      "island.mod.space.max": 100,
+      "facemuseum.mod.space.max": 100,
+      "earthspire.mod.space.max": 150,
+      "astronomy.max": 3,
+      "astronomy.rate": "0.1+1%",
+      "planeslore.max": 1,
+      "divination": {
+        "max": 1,
+        "rate": 0.1
+      },
+      "lore": {
+        "max": 1,
+        "rate": 0.1
+      },
+      "voidlore.max": 1,
+      "airlore.max": 1,
+      "scrying.max": 1,
+      "earthlore.max": 3,
+      "stamina.max": 2,
+      "hp.max": 1,
+      "stamina.rate": 0.1,
+      "nature.rate": 0.1,
+      "player.resist.nature": 5,
+      "naturedmg": 20,
+      "hp.rate": 2,
+      "airlore.rate": 1,
+      "earthlore.rate": 1
+    },
+    
+    // Loot drops upon completion (object with items and probabilities or quantities).
+    "loot": {
+      "pot_heal1": "5%",
+      "pot_stam1": "5%",
+      "pot_mana1": "5%",
+      "gems": "40%",
+      "managem": "14%",
+      "firegem": "2%",
+      "earthgem": "2%",
+      "airgem": "2%",
+      "watergem": "2%",
+      "runestones": "2%",
+      "titanhammer": 1
+    },
+    
+    // Log entry for completion (object with name and desc).
+    "log": {
+      "name": "Example Log Name",
+      "desc": "You have completed the example task."
+    },
+    
+    // Whether to warn the user before starting (e.g., for irreversible actions).
+    "warn": true,
+    
+    // Locks other tasks or features upon completion (string or array).
+    "lock": "example_lock_id"
+  }

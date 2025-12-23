@@ -1,6 +1,6 @@
 {
 	"name": "wizrobe",
-	"version": "0.12.1.1",
+	"version": "0.0.2",
 	"description": "theory of magic",
 	"main": "index.js",
 	"type": "module",
@@ -24,7 +24,7 @@
 		"prettier": "3.4.2",
 		"typescript": "4.5.5",
 		"vite": "5.4.20",
-		"vite-plugin-html": "3.2.2",
+		"vite-plugin-html": "^3.2.2",
 		"vite-plugin-static-copy": "1.0.6",
 		"vue-loader": "16.8.3"
 	},

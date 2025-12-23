@@ -1,6 +1,6 @@
 test/**
 dist/**
-dev/**
+
 node_modules/**
 vers.json
 package-lock.json

@@ -1,4 +1,5 @@
 module.exports = {
+	publicPath: process.env.NODE_ENV === "production" ? "/NecroArcane/" : "/",
 
 	assetsDir:'css',
 
@@ -7,5 +8,6 @@ module.exports = {
 	css:{
 		extract:true
 	}
+	
 
 }
