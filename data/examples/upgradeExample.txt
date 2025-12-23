@@ -1,0 +1,179 @@
+{
+  // Unique identifier for the upgrade. Required for all upgrades.
+  "id": "example_upgrade_id",
+  
+  // Display name of the upgrade.
+  "name": "Example Upgrade Name",
+  
+  // Description of the upgrade.
+  "desc": "This is a comprehensive example upgrade incorporating all possible fields from the provided upgrades.json.",
+  
+  // Tags for classification (string or array, e.g., "t_bodyplan" or "t_pets").
+  "tags": "t_example_tag",
+  
+  // Whether the upgrade is locked initially.
+  "locked": false,
+  
+  // Slot category for the upgrade (e.g., "bodyplan", "mount").
+  "slot": "example_slot",
+  
+  // Maximum level or instances of the upgrade.
+  "max": 1,
+  
+  // Modifications/effects provided by the upgrade (complex object with various stat mods).
+  "mod": {
+    "head.max": 1,  // Max for body parts or slots.
+    "hands.max": 1,
+    "back.max": 1,
+    "waist.max": 1,
+    "neck.max": 3,
+    "trinket.max": 1,
+    "fingers.max": 4,
+    "chest.max": 1,
+    "shins.max": 1,
+    "feet.max": 1,
+    "dist": 300,  // Distance or travel-related.
+    "runner.max": 1,  // For actions or runners.
+    "inv.max": 2,  // Inventory max.
+    "stress.max": 1,  // Stress capacity.
+    "speed": 2,  // Speed modifier.
+    "fire.rate": 0.1,  // Mana or resource rates.
+    "gems.max": 5,  // Max for gems.
+    "prismaticgems.max": 3,  // Prismatic gems max.
+    "gold.max": 800,  // Gold max.
+    "naturelore.max": 1,  // Lore max.
+    "arcana.rate": 0.005,  // Arcana rate.
+    "arcana.max": 0.5,  // Arcana max.
+    "mana.rate": 0.06,  // Mana rate.
+    "herbalism.max": 1,  // Skill max.
+    "herbalism.rate": 0.1,  // Skill rate.
+    "research.max": 5,  // Research max.
+    "t_rest.effect.stamina": 0.05,  // Effect on rest stamina.
+    "t_rest.effect.stress": -0.1,  // Effect on rest stress.
+    "earth.rate": 0.02,  // Earth rate.
+    "sellgem.result.gold": 15,  // Result gold from selling gems.
+    "shadow.rate": 0.02,  // Shadow rate.
+    "player.tohit": 3,  // Player to-hit modifier.
+    "t_craftwork.rate": "5%",  // Percentage rate for craftwork.
+    "crafting.rate": 0.1,  // Crafting rate.
+    "retreat.max": 1,  // Retreat max.
+    "scrolls.rate": "5%",  // Scrolls rate.
+    "codices.rate": "3%",  // Codices rate.
+    "tomes.rate": "2%",  // Tomes rate.
+    "gold.rate": "20%",  // Gold rate.
+    "focus.result.runner.skillprogress": "15%",  // Skill progress modifier.
+    "light.rate": 0.1,  // Light rate.
+    "light.max": 1,  // Light max.
+    "fire.max": 1  // Fire max.
+  },
+  
+  // Flavor text for thematic or humorous purposes.
+  "flavor": "This upgrade demonstrates everything possible.",
+  
+  // Requirement expression as a string (e.g., "g.arcanaaction>0&&g.research.max>=100&&g.lore>=4").
+  "require": "g.example>=1&&g.another>0",
+  
+  // Warning flag, boolean, for irreversible or important upgrades.
+  "warn": true,
+  
+  // Whether the upgrade can be repeated.
+  "repeat": false,
+  
+  // One-time cost to acquire the upgrade (object with resources).
+  "cost": {
+    "research": 225,
+    "arcana": 5,
+    "gold": 200,
+    "mana": 2,
+    "scrolls": 1,
+    "codices": 20,
+    "tomes": 10,
+    "gems": 10,
+    "managem": 25,
+    "firegem": 5,
+    "watergem": 10,
+    "airgem": 10,
+    "earthgem": 5,
+    "naturegem": 5,
+    "lightgem": 15,
+    "shadowgem": 5,
+    "spiritgem": 5,
+    "chaosgem": 25,
+    "timegem": 5,
+    "voidgem": 3,
+    "bloodgem": 2,
+    "herbs": 25,
+    "potionessence": 3,
+    "fineparts": 10,
+    "deepsteel": 25,
+    "sindel": 3,
+    "ichor": 5,
+    "dreams": 3,
+    "runestones": 5,
+    "firerune": 2,
+    "waterrune": 5,
+    "airrune": 5,
+    "earthrune": 5,
+    "naturerune": 5,
+    "lightrune": 5,
+    "shadowrune": 5,
+    "spiritrune": 5,
+    "manarune": 5,
+    "chaosrune": 5,
+    "timerune": 5,
+    "fire": 5,
+    "water": 0.03,
+    "air": 0.03,
+    "earth": 0.1,
+    "nature": 0.5,
+    "light": 0.25,
+    "shadow": 0.25,
+    "spirit": 0.1,
+    "chaos": 10,
+    "tempus": 5,
+    "void": 1
+  },
+  
+  // Results upon acquiring (string, boolean, or object with assignments like "adept": true).
+  "result": "adept",
+  
+  // Group category for organizing upgrades (e.g., "apprenticeship", "mount", "exploration").
+  "group": "example_group",
+  
+  // Log entry for completion (object with name and desc).
+  "log": {
+    "name": "Example Log Name",
+    "desc": "You have acquired the example upgrade."
+  },
+  
+  // Buy cost, similar to cost but sometimes used separately (object).
+  "buy": {
+    "gold": 100,
+    "gems": 20,
+    "research": 300,
+    "airgem": 5,
+    "arcana": 1,
+    "fire": 5,
+    "firegem": 5,
+    "lightgem": 15
+  },
+  
+  // Conversion or ongoing effect (object with input and output).
+  "convert": {
+    "input": {
+      "water": 0.03,
+      "air": 0.03
+    },
+    "output": {
+      "effect": {
+        "stamina": 0.25
+      }
+    }
+  },
+  
+  // Need: Prerequisite or condition (string like "stables" or expression).
+  "need": "example_need",
+  
+  // Text explanation for the need condition.
+  "needtext": "You need example_need to acquire this."
+}

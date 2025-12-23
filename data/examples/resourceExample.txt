@@ -1,0 +1,72 @@
+{
+  // Unique identifier for the resource. Required for all resources.
+  "id": "example_resource_id",
+  
+  // Group category for organizing resources (e.g., "basic", "knowledge", "runes", "gems", "materials", "esoteric").
+  "group": "example_group",
+  
+  // Description of the resource.
+  "desc": "This is a comprehensive example resource incorporating all possible fields from the provided resources.json.",
+  
+  // Extended or alternative description, not commonly used but inferred from patterns.
+  "extdesc": "Additional details about the resource.",
+  
+  // Display name if different from id.
+  "name": "Example Resource Name",
+  
+  // Flavor text for thematic or humorous purposes.
+  "flavor": "This resource demonstrates everything possible.",
+  
+  // Tags for classification (comma-separated string, e.g., "t_runes,elementalrunes,prismaticrunes").
+  "tags": "t_example_tag,example_category1,example_category2",
+  
+  // School or type, rarely used (e.g., "arcane").
+  "school": "example_school",
+  
+  // Whether the resource is locked initially.
+  "locked": false,
+  
+  // Maximum value or capacity for the resource.
+  "max": 10,
+  
+  // Sorting order for display purposes.
+  "sortOrder": 100,
+  
+  // Requirement expression as a string (e.g., "lore" or "g.t_chaosclass>0||g.chaoslore>0").
+  "require": "g.example>=1",
+  
+  // Unit flag, boolean, often false.
+  "unit": false,
+  
+  // Hide flag, boolean, to hide from display.
+  "hide": false,
+  
+  // Reverse flag, boolean, possibly for reversing progress display.
+  "reverse": true,
+  
+  // Reverse display flag, boolean.
+  "reverseDisplay": true,
+  
+  // Initial or current value, rarely used.
+  "val": 10,
+  
+  // Modifications/effects of owning this resource (complex object with stat modifications).
+  "mod": {
+    "research.rate": 0.005,  // Numeric rate modifier.
+    "research.max": 1,  // Numeric max modifier.
+    "arcana.rate": 0.001,  // Another rate example.
+    "runelore.rate": "0.02//100/-8",  // Formula string for rate.
+    "lore.rate": 0.01,  // Lore rate.
+    "tempus.rate": 0.05,  // Time-related rate.
+    "bf.rate": 0.01,  // Unknown, but from file.
+    "chaos.max": 1,  // Max for chaos.
+    "player.resist.shadow": 1,  // Resistance modifier.
+    "player.resist.void": 1,  // Void resistance.
+    "chaos.rate": 0.01,  // Chaos rate.
+    "light.rate": 0.1,  // Light rate.
+    "weary.rate": -0.1,  // Negative rate for weary.
+    "arcana.rate": "1%",  // Percentage string.
+    "unendingscroll.mod.scrolls.rate.base": "50%",  // Nested mod for base rate.
+    "unendingcodex.mod.codices.rate.base": "50%"  // Another nested example.
+  }
+}

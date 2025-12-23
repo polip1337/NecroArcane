@@ -1,0 +1,146 @@
+{
+  // Unique identifier for the skill. Required for all skills.
+  "id": "example_skill_id",
+  
+  // Display name if different from id (e.g., "mage lore").
+  "name": "Example Skill Name",
+  
+  // Description of the skill.
+  "desc": "This is a comprehensive example skill incorporating all possible fields from the provided skills.json.",
+  
+  // Extended description, used for more details.
+  "extdesc": "Additional details about the skill.",
+  
+  // Prerequisite or need condition (string like "workspace" or "t_pets").
+  "need": "example_need",
+  
+  // Text explanation for the need condition.
+  "needtext": "Explanation for the need.",
+  
+  // School or category (string or array, e.g., "arcane" or ["nature", "shadow", "light"]).
+  "school": "example_school",
+  
+  // Tags for classification (string like "t_school").
+  "tags": "t_example_tag",
+  
+  // Verb form for progress display (e.g., "reading lore").
+  "verb": "examplifying",
+  
+  // Flavor text for thematic purposes.
+  "flavor": "This skill demonstrates everything possible.",
+  
+  // Alias for the skill, if any.
+  "alias": "example_alias",
+  
+  // Level cap or something, numeric.
+  "level": 10,
+  
+  // Maximum value, if applicable.
+  "max": 1,
+  
+  // Requirement expression as a string (e.g., "g.tier3>0&&g.lore>=15").
+  "require": "g.example>=1&&g.another>0",
+  
+  // Buy cost to unlock the skill (object with resources).
+  "buy": {
+    "research": 20,
+    "arcana": 60
+  },
+  
+  // Per-tick or ongoing costs during skill use (object).
+  "run": {
+    "stamina": 0.3,
+    "research": 5,
+    "mana": 0.5,
+    "gold": 1,
+    "spirit": 0.2,
+    "nature": 0.5
+  },
+  
+  // One-time results upon skill progression or completion (object).
+  "result": {
+    "arcana": 1
+  },
+  
+  // Ongoing effects from the skill (object).
+  "effect": {
+    "research": 0.5,
+    "naturelore.exp": 1,
+    "arcana": 0.001
+  },
+  
+  // Modifications provided by the skill (complex object with stat mods).
+  "mod": {
+    "research.max": 1,  // Max research.
+    "arcana.max": 1,  // Max arcana.
+    "arcana.rate": 0.001,  // Arcana rate.
+    "stress.max": 1,  // Stress max.
+    "stress.rate": -0.1,  // Stress rate.
+    "luck": 0.2,  // Luck modifier.
+    "research.rate": 0.05,  // Research rate.
+    "lore.rate": 0.1,  // Lore rate.
+    "research.max": "0.3%",  // Percentage max.
+    "lore.max": 0.2,  // Lore max.
+    "languages.max": 0.2,  // Languages max.
+    "hp.max": 1,  // HP max.
+    "hp.rate": 0.1,  // HP rate.
+    "t_rest.effect.hp": 0.4,  // Rest effect on HP.
+    "steed.mod.dist": 1,  // Mount distance mod.
+    "animals.rate": 0.05,  // Animals rate.
+    "allies.max": 0.25,  // Allies max.
+    "herbs.max": 2,  // Herbs max.
+    "crafting.max": 0.1,  // Crafting max.
+    "crafting.rate": 0.05,  // Crafting rate.
+    "s_travel.max": 0.1,  // Travel max.
+    "s_travel.rate": 0.05,  // Travel rate.
+    "languages.rate": 0.05,  // Languages rate.
+    "gold.rate": 0.01,  // Gold rate.
+    "mana.max": 0.5,  // Mana max.
+    "prismatic.rate": 0.02,  // Prismatic rate.
+    "scraftlist.max": 1,  // Spellcraft list max.
+    "userSpells.max": 0.7,  // User spells max.
+    "minions.max": "10%",  // Minions max percentage.
+    "dist": "5%",  // Distance percentage.
+    "sindel.rate": 0.0001,  // Sindel rate.
+    "sindel.max": 0.4,  // Sindel max.
+    "space.max": "2%",  // Space max percentage.
+    "tempus.max": 1,  // Tempus max.
+    "tempus.rate": 0.001,  // Tempus rate.
+    "spellheal": 2,  // Spell heal modifier.
+    "chaos.max": 1,  // Chaos max.
+    "chaos.rate": "0.01+1%",  // Chaos rate with addition.
+    "research.rate": "1%",  // Research rate percentage.
+    "enchantslots.max": 1,  // Enchant slots max.
+    "fire.max": 1,  // Fire max.
+    "fire.rate": "1%",  // Fire rate.
+    "firedmg": 3,  // Fire damage.
+    "water.max": 1,  // Water max.
+    "water.rate": "1%",  // Water rate.
+    "waterdmg": 3,  // Water damage.
+    "air.max": 1,  // Air max.
+    "air.rate": "1%",  // Air rate.
+    "airdmg": 3,  // Air damage.
+    "earth.max": 1,  // Earth max.
+    "earth.rate": "1%",  // Earth rate.
+    "earthdmg": 3,  // Earth damage.
+    "light.max": 1,  // Light max.
+    "light.rate": "1%",  // Light rate.
+    "lightdmg": 3,  // Light damage.
+    "shadow.max": 1,  // Shadow max.
+    "shadow.rate": "1%",  // Shadow rate.
+    "shadowdmg": 3,  // Shadow damage.
+    "spirit.max": 1,  // Spirit max.
+    "spirit.rate": "1%",  // Spirit rate.
+    "spiritdmg": 3,  // Spirit damage.
+    "mana.max": 1,  // Mana max (repeated for example).
+    "mana.rate": "1%",  // Mana rate.
+    "manadmg": 3,  // Mana damage.
+    "nature.max": 1,  // Nature max.
+    "nature.rate": "1%",  // Nature rate.
+    "naturedmg": 3,  // Nature damage.
+    "t_summon_beast.statedata.hp.max": "10%",  // Summon beast HP max.
+    "t_summon_beast.statedata.hp.rate": 0.2,  // Summon beast HP rate.
+    "t_summon_beast.statedata.defense": "10%",  // Summon beast defense.
+    "t_summon_beast.statedata.speed": 1  // Summon beast speed.
+  }
+}

@@ -1,0 +1,2340 @@
+[
+	
+	{
+		"id": "study",
+		"verb": "studying scrolls",
+		"desc": "Study arcane scrolls.",
+		"group": "research",
+		"require": "g.scrolls>=1",
+		"fill": ["research", "arcana"],
+		"perpetual": true,
+		"run": {
+			"stamina": 0.2
+		},
+		"effect": {
+			"research": 0.55,
+			"arcana": { "value": 0.002, "skipLocked": true }
+		},
+		"every": {
+			"100": {
+				"effect.research": "0.05:100"
+			}
+		}
+	},	
+	
+	{
+		"id": "t_daily_chores",
+		"name": "Tend the Hearth",
+		"desc": "Help with daily chores: feeding the goats, mending clothes, preparing meals. Shadow follows you, tail wagging.",
+		"extdesc": "Simple, honest work. The smell of bread baking, father's stories by the fire, mother humming as she stitches. These moments build the foundation of a home.",
+		"verb": "performing chores",
+		"actname": "Family Duties",
+		"locked":false,
+		"flavor": "The hearth-fire crackles with warmth that has nothing to do with heat.",
+		"group": "Home",
+		"tags": "t_domestic,t_family",
+		"perpetual": true,
+		"effect": {
+		  "family_bonds": 0.5,
+		  "stamina": -0.2
+		}
+	  },
+	  
+	  {
+		"id": "t_herb_gathering",
+		"name": "Forage in Sun-Dappled Meadows",
+		"desc": "Join your brothers in the meadows beyond the village wall, baskets in hand, to collect sun-herb, marrowroot, and silverleaf.",
+		"extdesc": "Laughter and competition fill the air as you search. Kael finds the biggest patches, while Bren teaches you which leaves are best for poultices. Shadow digs for roots.",
+		"verb": "gathering herbs",
+		"actname": "Herb Foraging",
+		"group": "Home",
+		"tags": "t_foraging,t_nature",
+		"require": "g.family_bonds>=10",
+		"cost": {
+		  "stamina": 1
+		},
+		"result": {
+		  "herbs": 2.5,
+		  "naturelore.exp": 0.5,
+		  "family_bonds": 0.2,
+		  "village_reputation": 0.05
+		},
+		"log": {
+		  "name": "First Foray",
+		  "desc": "You returned with a basket full of greenery and a heart full of sun. Your mother smiled. 'These will mend many hurts,' she said."
+		}
+	  },
+	  
+	  {
+		"id": "t_assist_mother",
+		"name": "Assist Mother the Healer",
+		"desc": "Grind herbs, prepare poultices, and comfort patients under your mother's gentle guidance. Learn the art of healing through service.",
+		"extdesc": "You watch her hands—sure and steady—as she sets a bone. You listen to her voice—calm and kind—as she soothes a fevered brow. You begin to understand that healing is more than herbs; it is presence.",
+		"verb": "assisting healing",
+		"actname": "Healer's Apprentice",
+		"group": "Home",
+		"tags": "t_healing,t_knowledge",
+		"require": "g.herbs>=5",
+		"perpetual":true,
+		"cost": {
+		  "herbs": 1,
+		  "stamina": 0.5
+		},
+		"effect": {
+		  "knowledge": 1.2,
+		  "village_reputation": 1,
+		  "gold": 0.5,
+		  "healing.exp": 0.8
+		}
+	  },
+	  
+	  {
+		"id": "t_evening_prayers",
+		"name": "Evening Prayers at the Shrine",
+		"desc": "Join your family at the small stone shrine at the edge of the village. Offer a portion of your earnings to the gods of hearth, harvest, and health.",
+		"extdesc": "The coins clink softly in the offering bowl. Father prays for a good harvest, mother for the village's health, your brothers for strength. You pray for... understanding.",
+		"verb": "praying",
+		"actname": "Offer to Gods",
+		"group": "Town",
+		"tags": "t_prayer,t_family",
+		"require": "g.gold>=2&&g.family_bonds>=20",
+		"cost": {
+		  "gold": 2
+		},
+		"result": {
+		  "faith": 3,
+		  "village_reputation": 1,
+		  "family_bonds": 1
+		},
+		"log": {
+		  "name": "Shared Devotion",
+		  "desc": "The shrine stone was warm from the day's sun. For a moment, holding your family's hands, you felt a flicker of something greater."
+		}
+	  },
+	  
+	  {
+		"id": "t_study_scrolls",
+		"name": "Study Temple Scrolls",
+		"desc": "The ancient temple allows limited access to its scrolls on healing rituals. The knowledge is profound, but the temple elders require both donation and reputation.",
+		"extdesc": "The air smells of dust and incense. The script is archaic, speaking of healing light and life-force. Some passages hint at powers beyond simple herb-craft.",
+		"verb": "studying arcane texts",
+		"actname": "Ancient Studies",
+		"group": "Town",
+		"tags": "t_study,t_magic",
+		"need": "temple_access",
+		"needtext": "You must have permission to enter the temple archives.",
+		"require": "g.knowledge>=15&&g.faith>=25&&g.village_reputation>=20&&g.gold>=10",
+		"max": 5,
+		"cost": {
+		  "gold": 10
+		},
+		"run": {
+		  "stamina": 0.4
+		},
+		"result": {
+		  "knowledge": 15,
+		  "faith": 1
+		},
+		"effect": {
+		  "knowledge": 3,
+		  "arcana.rate": 0.001
+		},
+		"at": {
+		  "5": {
+			"result.unlock": "t_simple_rituals"
+		  }
+		},
+		"log": {
+		  "name": "Eyes Opened",
+		  "desc": "The scrolls spoke of mending flesh with will and light. A thrilling, terrifying idea. Healing is not just craft... it could be art. Power."
+		}
+	  },
+	  
+	  {
+		"id": "t_plead_at_shrine",
+		"name": "Plead at the Silent Shrine",
+		"desc": "Rumors of a creeping sickness in the east. You go to the shrine alone now, your prayers no longer grateful but desperate. 'Please, protect them.'",
+		"extdesc": "The offering bowl feels cold. Your words echo back to you, unanswered. The familiar carvings of benevolent gods seem like empty masks.",
+		"verb": "begging the gods",
+		"actname": "Desperate Prayers",
+		"group": "Town",
+		"tags": "t_prayer,t_desperate",
+		"require": "g.village_reputation>=30&&g.faith>0&&g.knowledge>=10",
+		"perpetual": true,
+		"cost": {
+		  "faith": 0.5
+		},
+		"run": {
+		  "stress": 0.1
+		},
+		"effect": {
+		  "grudge": 0.3,
+		  "stress": 0.2
+		},
+		"result": {
+		  "faith": -1
+		},
+		"mod": {
+		  "prayer.effect": -0.01
+		}
+	  },
+	  
+	  {
+		"id": "t_treat_stricken_brothers",
+		"name": "Treat Your Stricken Brothers",
+		"desc": "Kael burns with fever. Bren coughs blood. You and your mother exhaust every poultice, every prayer. The herbs are dwindling. So is their strength.",
+		"extdesc": "Their rooms smell of sickness and desperation. Shadow whines at the door. Your mother's hands, once so steady, now tremble. 'I don't know this pattern,' she whispers.",
+		"verb": "fighting the blight",
+		"actname": "Battling the Plague",
+		"group": "healing",
+		"tags": "t_healing,t_desperate,t_family",
+		"need": ["family_bonds", "herbs", "mother_present"],
+		"needtext": "You need your family, herbs, and your mother's knowledge—all of which are failing.",
+		"require": "g.family_bonds>=50&&g.faith<=40&&g.plague_active==true",
+		"max": 10,
+		"cost": {
+		  "herbs": 10,
+		  "faith": 2,
+		  "stamina": 3
+		},
+		"run": {
+		  "stress": 0.5,
+		  "family_bonds": -0.2
+		},
+		"effect": {
+		  "grudge": 1,
+		  "plague_corpses": 0.1,
+		  "grief_mana": 0.05
+		},
+		"at": {
+		  "5": {
+			"disable": ["t_herb_gathering"],
+			"needtext": "Your brothers are too ill to go foraging."
+		  }
+		},
+		"every": {
+		  "3": {
+			"effect.grief_mana": "0.1:5"
+		  }
+		}
+	  },
+	  
+	  {
+		"id": "t_failed_vigil",
+		"name": "Keep the Death-Vigil",
+		"desc": "The prayers have stopped. Now there is only watching. You hold Kael's hand as his breath rattles, then stops. The silence that follows is not peaceful. It is accusatory.",
+		"extdesc": "You expected a release, a passing. There is only emptiness. The divine presence you once sensed in the shrine is absent here, in this room of death. The absence is a weight.",
+		"verb": "keeping vigil",
+		"actname": "Watch Them Fade",
+		"group": "family",
+		"tags": "t_morbid,t_turning_point",
+		"need": "family_home",
+		"require": "g.family_bonds>=30&&g.faith<=10&&g.plague_corpses>=1",
+		"warn": true,
+		"cost": {
+		  "faith": 5,
+		  "family_bonds": 10
+		},
+		"result": {
+		  "plague_corpses": 1,
+		  "grief_mana": 10,
+		  "grudge": 5,
+		  "knowledge": -5
+		},
+		"log": {
+		  "name": "The First Silence",
+		  "desc": "Kael is gone. The gods did not take him. They merely stood aside. Your grief curdles into something colder, harder. A new resource begins to pool in your soul's hollows."
+		},
+		"mod": {
+		  "faith.max": -20,
+		  "grief_mana.rate": 0.1
+		}
+	  },
+	  
+	{
+		"id": "smith_work",
+		"name": "Smith",
+		"verb": "Smithing",
+		"desc": "Smithing equipment for enchanting.",
+		"group": "affluence",
+		"tags": "t_craftwork",
+		"require": "g.job_smith>0||g.crafting>=8",
+		"length": 15,
+		"run": {
+			"stamina": 0.4
+		},
+		"result": {
+			"gold": 5
+		},
+		"at": {
+			"20": {
+				"run.stamina": -0.1
+			},
+			"50": {
+				"run.stamina": -0.1
+			}
+		}
+	},
+	{
+		"id": "chores",
+		"name": "do chores",
+		"desc": "Standard apprentice work.",
+		"verb": "working",
+		"require": "apprentice",
+		"at": {
+			"5": {
+				"result.gold": 1
+			},
+			"25": {
+				"result.gold": 1
+			},
+			"500": {
+				"result.virtue": -0.3
+			}
+		},
+		"cost": {
+			"stamina": 1.7
+		},
+		"result": {
+			"virtue": 0.3,
+			"gold": 3
+		},
+		"group": "apprenticeship"
+	},
+	
+	{
+		"id": "errands",
+		"name": "run errands",
+		"desc": "Standard apprentice work.",
+		"verb": "running errands",
+		"require": "apprentice",
+		"length": 10,
+		"at": {
+			"10": {
+				"effect.gold": 0.1
+			},
+			"100": {
+				"effect.gold": 0.1
+			},
+			"150": {
+				"effect.virtue": -0.1
+			}
+		},
+		"run": {
+			"stamina": 0.2
+		},
+		"effect": {
+			"virtue": 0.1,
+			"gold": 0.5
+		},
+		"group": "apprenticeship"
+	},
+	{
+		"id": "prestidigitation",
+		"desc": "Why study when you can perform parlor tricks for coin?",
+		"extdesc": "Such child's play only suits a novice mage. Demeaning yourself to this level as a professional would be embarassing.",
+		"verb": "performing",
+		"require": "spellbook",
+		"length": 15,
+		"every": {
+			"10": {
+				"effect.gold": "0.01:10"
+			}
+		},
+		"run": {
+			"stamina": 0.2,
+			"mana": 0.2
+		},
+		"effect": {
+			"research": -1,
+			"gold": 0.8
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "thievery",
+		"name": "arcane thievery",
+		"desc": "Use your powers to cajole, coerce, and cudgel gold from the pockets of civilians.",
+		"require": "g.trickery>=4",
+		"tags": "t_evilact",
+		"cost": {
+			"stamina": 2,
+			"mana": 1,
+			"research": 5
+		},
+		"result": {
+			"gold": 4,
+			"trickery.exp": 3,
+			"evilamt": 5,
+			"virtue": -3
+		},
+		"at": {
+			"5": {
+				"result.gold": 1
+			},
+			"15": {
+				"result.gold": 2
+			},
+			"50": {
+				"result.gold": 3
+			},
+			"150": {
+				"result.gold": 5
+			}
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "heist",
+		"name": "magic heist",
+		"desc": "Orchestrate a theft on a guarded vault.",
+		"verb": "thieving",
+		"require": "g.t_chaosclass>0&&g.trickery>=5",
+		"length": 50,
+		"tags": "t_heist_act",
+		"run": {
+			"stamina": 0.4,
+			"mana": 0.4
+		},
+		"effect": {
+			"research": -0.8,
+			"trickery.exp": "g.trickery.rate*0.2",
+			"virtue": -0.3
+		},
+		"result": {
+			"gems": "4~10",
+			"gold": 200
+		},
+		"mod": {
+			"trickery.max": "0.05//100/-10"
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "spellbook",
+		"actname": "bind spellbook",
+		"verb": "binding spells",
+		"require": "g.lore>=2&&g.crafting>=2&&g.languages>=1",
+		"desc": "The portal to true magic.",
+		"length": 50,
+		"max": 1,
+		"cost": {
+			"research": 20,
+			"codices": 1,
+			"arcana": 1,
+			"mana": 5
+		},
+		"log": {
+			"name": "Book of Spells",
+			"desc": "Under your master's critical eye, you compile your very own book of spells."
+		},
+		"run": {
+			"stamina": 0.2
+		},
+		"effect": {
+			"lore.exp": 0.5,
+			"player.exp": 0.5
+		},
+		"mod": {
+			"research.max": 25,
+			"research.rate": 0.07,
+			"arcana.rate": 0.005,
+			"lore.mod.arcana.max": 0.5,
+			"lore.mod.spelllist.max": 0.5
+		},
+		"group": "spellcasting"
+	},
+	{
+		"id": "tools_1",
+		"name": "basic tools",
+		"actname": "basic tools",
+		"verb": "Creating Tools",
+		"require": "g.crafting>=(10-5*g.job_smith)",
+		"desc": "Improving your tools",
+		"length": 20,
+		"max": 1,
+		"cost": {
+			"gold": 50
+		},
+		"log": {
+			"name": "Tools Completed",
+			"desc": "Your new and improved tools should make your work a lot more efficient."
+		},
+		"run": {
+			"stamina": 0.4
+		},
+		"mod": {
+			"smith_work.length": -3
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "tools_2",
+		"name": "advanced tools",
+		"actname": "advanced tools",
+		"verb": "Creating Tools",
+		"require": "g.crafting>=(15-5*g.job_smith)&&g.tools_1>0",
+		"desc": "Improving your tools.",
+		"length": 50,
+		"max": 1,
+		"cost": {
+			"gold": 250,
+			"gems": 10,
+			"firegem": 5
+		},
+		"log": {
+			"name": "Tools Completed",
+			"desc": "Your new and improved tools should make your work a lot more efficient."
+		},
+		"run": {
+			"stamina": 0.7
+		},
+		"mod": {
+			"smith_work.length": -2
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "tools_3",
+		"name": "expert tools",
+		"actname": "expert tools",
+		"verb": "Creating Tools",
+		"require": "g.crafting>=(20-5*g.job_smith)&&g.tools_2>0",
+		"desc": "Improving your tools.",
+		"length": 250,
+		"max": 1,
+		"cost": {
+			"gold": 250,
+			"gems": 10,
+			"runestones": 3,
+			"firerune": 2
+		},
+		"log": {
+			"name": "Tools Completed",
+			"desc": "Your new and improved tools should make your work a lot more efficient."
+		},
+		"run": {
+			"stamina": 0.7
+		},
+		"mod": {
+			"smith_work.length": -2
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "service",
+		"name": "offer services",
+		"desc": "Offer your magical services to the nearby townsfolk.",
+		"verb": "servicing",
+		"require": "(g.adept+g.blueadept)>0",
+		"perpetual": true,
+		"at": {
+			"150": {
+				"effect.gold": 0.3
+			},
+			"600": {
+				"effect.gold": 0.6
+			},
+			"1200": {
+				"effect.gold": 1
+			}
+		},
+		"run": {
+			"stamina": 0.35,
+			"mana": 0.1
+		},
+		"effect": {
+			"gold": 1.6
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "tendanimals",
+		"name": "tend animals",
+		"desc": "Tend to sick and wounded animals in the wild.",
+		"verb": "tending",
+		"require": "tier0",
+		"perpetual": true,
+		"tags": "t_goodact",
+		"at": {
+			"25": {
+				"effect.animals.exp": 0.1
+			},
+			"300": {
+				"effect.animals.exp": 0.2
+			},
+			"1000": {
+				"effect.animals.exp": 0.3
+			}
+		},
+		"run": {
+			"stamina": 0.3,
+			"nature": 0.1
+		},
+		"effect": {
+			"virtue": 0.3,
+			"naturelore.exp": 0.2,
+			"animals.exp": 0.2
+		}
+	},
+	{
+		"id": "act_garden",
+		"name": "gardening",
+		"perpetual": true,
+		"verb": "botanicalizing",
+		"desc": "Study plants and herbs.",
+		"tags": "t_contemplation",
+		"need": "plantsource",
+		"require": "(g.druid+g.alchemist+g.warden)>0",
+		"run": {
+			"stamina": 0.3,
+			"nature": 0.1
+		},
+		"at": {
+			"100": {
+				"effect.herbs": 0.1
+			},
+			"1200": {
+				"effect.herbs": 0.2
+			},
+			"5000": {
+				"effect.research": 0.1
+			}
+		},
+		"effect": {
+			"research": 1.5,
+			"arcana": 0.01,
+			"herbs": 0.2,
+			"herbalism.exp": "g.herbalism.rate*0.1",
+			"naturelore.exp": "g.naturelore.rate*0.1"
+		},
+		"exclude": "t_contemplation",
+		"group": "research"
+	},
+	{
+		"id": "act_scry",
+		"name": "scry",
+		"verb": "peering",
+		"desc": "Knowledge for those who look.",
+		"require": "(g.t_divinationclass+g.astralseer)>0&&g.chronomancy>=3&&g.scrying>=5",
+		"perpetual": true,
+		"length": 5,
+		"run": {
+			"stamina": 0.5,
+			"mana": 0.3,
+			"tempus": 0.1
+		},
+		"effect": {
+			"scrying.exp": "g.scrying.rate*0.2"
+		},
+		"result": {
+			"research": 50,
+			"arcana": 0.25
+		},
+		"at": {
+			"60": {
+				"result.research": 10
+			},
+			"240": {
+				"result.research": 20,
+				"result.arcana": 0.25
+			},
+			"600": {
+				"result.research": 20,
+				"result.arcana": 0.5
+			}
+		},
+		"group": "research"
+	},
+	{
+		"id": "act_concoct",
+		"name": "concoct potions",
+		"perpetual": true,
+		"verb": "concocting",
+		"desc": "Experiment with potions.",
+		"require": "g.t_potionclass>0&&g.tier2>0",
+		"need": ["workspace", "potsource"],
+		"length": 25,
+		"cost": {
+			"herbs": 5
+		},
+		"run": {
+			"stamina": 0.5
+		},
+		"at": {
+			"30": {
+				"effect.research": 0.05
+			},
+			"120": {
+				"effect.research": 0.05,
+				"result.gold": 0.5
+			},
+			"500": {
+				"effect.research": 0.1,
+				"effect.potions.max": 0.0001
+			}
+		},
+		"effect": {
+			"research": 1.3,
+			"alchemy.exp": "g.alchemy.rate*0.1",
+			"potions.exp": "g.potions.rate*0.1"
+		},
+		"result": {
+			"gold": 2
+		},
+		"loot": {
+			"pot_heal1": "5%",
+			"pot_stam1": "5%",
+			"pot_mana1": "5%"
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "act_element",
+		"name": "Attune to elements",
+		"perpetual": true,
+		"verb": "attuning",
+		"desc": "Attune to primal forces of the world.",
+		"require": "g.t_elementalclass>0",
+		"run": {
+			"stamina": 0.5,
+			"fire": 0.1,
+			"water": 0.1,
+			"air": 0.1,
+			"earth": 0.1
+		},
+		"at": {
+			"30": {
+				"effect.research": 0.05,
+				"effect.arcana": 0.001,
+				"effect.elemental.exp": 0.2
+			},
+			"120": {
+				"effect.research": 0.05,
+				"effect.elemental.exp": 0.3,
+				"effect.elemental.rate": 0.01
+			},
+			"500": {
+				"effect.research": 0.2,
+				"effect.arcana": 0.001
+			}
+		},
+		"effect": {
+			"research": 1.3
+		},
+		"mod": {
+			"alchemy.max": "0.001//3000/-1",
+			"firelore.max": "0.001//3000/-1",
+			"waterlore.max": "0.001//3000/-1",
+			"earthlore.max": "0.001//3000/-1",
+			"airlore.max": "0.001//3000/-1"
+		},
+		"group": "research"
+	},
+	{
+		"id": "act_mine",
+		"name": "mine",
+		"desc": "Delve the depths for gems of mystic potential. Requires a mine or sufficient geosculpting.",
+		"verb": "mining",
+		"need": "g.t_mine>0||g.geosculpting>=10",
+		"needtext": "Must own a mineshaft or be a specialized earth mage.",
+		"length": 40,
+		"perpetual": true,
+		"run": {
+			"stamina": 0.5,
+			"earth": 0.2
+		},
+		"at": {
+			"20": {
+				"effect.gold.min": 0.3,
+				"effect.gold.max": 0.4,
+				"effect.gems": 0.05
+			},
+			"150": {
+				"effect.gold.min": 0.4,
+				"effect.gold.max": 0.6,
+				"effect.gems": 0.05
+			},
+			"550": {
+				"effect.gold.min": 0.5,
+				"effect.gold.max": 0.8
+			},
+			"2000": {
+				"effect.gold.min": 0.8,
+				"effect.gold.max": 0.5,
+				"effect.gems": 0.15
+			}
+		},
+		"effect": {
+			"gold": "0.5~1"
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "dreamweaver",
+		"desc": "Spin your dreams upon a tapestry.",
+		"verb": "dream weaving",
+		"require": "g.dreams>0&&g.weaving>=5",
+		"perpetual": true,
+		"length": 10,
+		"run": {
+			"stamina": 0.7,
+			"mana": 1,
+			"gold": 8,
+			"research": 1,
+			"arcana": 0.02
+		},
+		"at": {
+			"500": {
+				"effect.dreams": 0.0002
+			},
+			"2000": {
+				"effect.dreams": 0.0002
+			},
+			"5000": {
+				"effect.dreams": 0.0002
+			}
+		},
+		"effect": {
+			"dreams": 0.0005
+		},
+		"flavor": "We are the dream-makers.",
+		"group": "crafting"
+	},
+	{
+		"id": "starwish",
+		"desc": "Turn star shards into dreams.",
+		"require": "g.astrallore>=5&&g.divination>=10&&g.dreams>0",
+		"fill": "dreams",
+		"cost": {
+			"arcana": 1,
+			"sindel": 1
+		},
+		"result": {
+			"dreams": 1
+		},
+		"flavor": "Star-light, Star-bright...",
+		"group": "crafting"
+	},
+	{
+		"id": "spingold",
+		"name": "spin gold",
+		"desc": "Spin straw into gold.",
+		"verb": "spinning",
+		"tags": "t_craftwork",
+		"require": "g.weaving>0",
+		"need": "weavesource",
+		"perpetual": true,
+		"length": 10,
+		"run": {
+			"stamina": 0.3,
+			"mana": 0.2
+		},
+		"mod": {
+			"weaving.max": "?1"
+		},
+		"effect": {
+			"gold": 0.75
+		},
+		"at": {
+			"15": {
+				"effect.gold": 0.25
+			},
+			"60": {
+				"effect.gold": 0.5
+			},
+			"120": {
+				"effect.gold": 0.75
+			}
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "murder",
+		"desc": "An incidental necessity to the advancement of magic.",
+		"flavor": "Why do they come to me to die?",
+		"group": "materials",
+		"tags": "t_evilact",
+		"require": "g.anatomy>=5&&g.shadowlore>=5",
+		"length": 10,
+		"run": {
+			"stamina": 1
+		},
+		"result": {
+			"evilamt": 15,
+			"stress": -2,
+			"bodies": { "value": 1, "skipLocked": true },
+			"gold": 40
+		}
+	},
+	{
+		"id": "paidseance",
+		"name": "hold seance",
+		"verb": "holding seance",
+		"desc": "Channel spirits for a small fee.",
+		"require": ["divination", "tier0", "spiritlore"],
+		"perpetual": true,
+		"length": 10,
+		"run": {
+			"stamina": 0.3,
+			"spirit": 0.1
+		},
+		"at": {
+			"15": {
+				"effect.gold": 0.5
+			},
+			"30": {
+				"effect.gold": 0.5
+			},
+			"60": {
+				"effect.gold": 0.5
+			},
+			"90": {
+				"effect.gold": 0.5
+			},
+			"120": {
+				"effect.gold": 0.5
+			}
+		},
+		"effect": {
+			"gold": 0.5,
+			"divination.exp": "g.divination.rate*0.2"
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "treatailments",
+		"name": "treat ailments",
+		"desc": "Cure customers of magical ailments.",
+		"require": "g.neophyte>0&&g.anatomy>=3",
+		"tags": "t_goodact",
+		"cost": {
+			"stamina": 2
+		},
+		"at": {
+			"5": {
+				"result.gold": 1
+			},
+			"15": {
+				"result.gold": 2
+			},
+			"50": {
+				"result.gold": 2
+			},
+			"150": {
+				"result.gold": 3
+			}
+		},
+		"result": {
+			"virtue": 5,
+			"evilamt": -3,
+			"gold": 3
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "readpalms",
+		"name": "read palms",
+		"verb": "reading palms",
+		"require": "g.divination>=5||g.trickster>0",
+		"desc": "Read palms for a small fee.",
+		"cost": {
+			"stamina": 2,
+			"mana": 2
+		},
+		"at": {
+			"5": {
+				"result.gold": 1
+			},
+			"15": {
+				"result.gold": 2
+			},
+			"30": {
+				"result.gold": 2.5
+			},
+			"60": {
+				"result.gold": 3
+			}
+		},
+		"result": {
+			"gold": 5.5
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "magicadvice",
+		"name": "advise notables",
+		"desc": "From worried village councils to bumbling barons, they all require your advice.",
+		"flavor": "Whether they know it or not.",
+		"group": "affluence",
+		"require": "(g.t_knowledgeclass+g.t_divinationclass)>0",
+		"cost": {
+			"stamina": 0.3
+		},
+		"at": {
+			"50": {
+				"result.gold": 0.1
+			},
+			"150": {
+				"result.gold": 0.1
+			},
+			"500": {
+				"result.gold": 0.3
+			},
+			"1500": {
+				"result.gold": 0.5
+			}
+		},
+		"result": {
+			"virtue": 0.3,
+			"evilamt": -0.2,
+			"gold": 0.35
+		}
+	},
+	{
+		"id": "hattrick",
+		"name": "hat trick",
+		"desc": "Pull small objects out of thin air.",
+		"flavor": "An ordinary wizard's cap.",
+		"group": "materials",
+		"require": "g.trickster>0&&g.conjuration>=2",
+		"cost": {
+			"mana": 5,
+			"stamina": 4,
+			"gold": 50
+		},
+		"loot": {
+			"gems": "40%",
+			"managem": "14%",
+			"firegem": "2%",
+			"earthgem": "2%",
+			"airgem": "2%",
+			"watergem": "2%",
+			"runestones": "2%"
+		},
+		"result": {
+			"trickery.exp": 2,
+			"conjuration.exp": 2
+		}
+	},
+	{
+		"id": "gatherherbs",
+		"name": "gather herbs",
+		"desc": "Gather herbs used in potions and alchemy.",
+		"require": "g.herbalism>=2",
+		"need": "plantsource",
+		"cost": {
+			"stamina": 3
+		},
+		"result": {
+			"herbalism.exp": 5,
+			"herbs": 2
+		},
+		"group": "materials"
+	},
+	{
+		"id": "sellherbs",
+		"name": "Sell Herbs",
+		"require": "gatherherbs",
+		"cost": {
+			"herbs": 1
+		},
+		"result": {
+			"gold": 2
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "rest",
+		"tags": "t_rest",
+		"name": "relax",
+		"verb": "relaxing",
+		"slot": "rest",
+		"locked": false,
+		"owned": true,
+		"perpetual": true,
+		"fill": ["stamina", "hp", "prismatic", "stress"],
+		"effect": {
+			"prismatic": { "value": 0.5 },
+			"stamina": 0.8,
+			"hp": 1,
+			"stress": -1
+		},
+		"group": "Home"
+	},
+	{
+		"id": "slumber",
+		"desc": "The deepest sleep guards the greatest insights.",
+		"require": "g.up_slumber>0",
+		"tags": "t_rest",
+		"verb": "sleeping",
+		"slot": "rest",
+		"perpetual": true,
+		"effect": {
+			"prismatic": 0.6,
+			"fundamental": 0.5,
+			"stamina": 1,
+			"hp": 1.2,
+			"stress": -1.1,
+			"dreams": 0.0003
+		},
+		"group": "rest"
+	},
+	{
+		"id": "wander",
+		"alias": "a_travel",
+		"name": "wander",
+		"perpetual": true,
+		"verb": "Wandering",
+		"desc": "Wander the wide world.",
+		"need": "g.t_mobilehome>0||g.mendicant>0",
+		"needtext": "Must live in a wagon or camp, or must eschew material attachments by becoming a mendicant.",
+		"run": {
+			"stamina": 0.4
+		},
+		"mod": {
+			"naturelore.max": "0.0024//1250/-10"
+		},
+		"effect": {
+			"nature": 0.3,
+			"naturelore.exp": "g.naturelore.rate*0.2",
+			"animals.exp": 1,
+			"herbalism.exp": 1
+		},
+		"flavor": "A tramp abroad.",
+		"group": "knowledge"
+	},
+	{
+		"id": "pace",
+		"perpetual": true,
+		"verb": "pacing",
+		"desc": "Pace your home as you contemplate the arcane.",
+		"tags": "t_contemplation",
+		"require": "tier0",
+		"run": {
+			"stamina": 0.4
+		},
+		"at": {
+			"30": {
+				"effect.research": 0.05
+			},
+			"120": {
+				"effect.research": 0.1,
+				"effect.arcana": 0.01
+			},
+			"500": {
+				"effect.research": 0.2,
+				"effect.arcana": 0.01
+			}
+		},
+		"effect": {
+			"research": 1.75,
+			"arcana": {
+				"value": 0.01
+			}
+		},
+		"exclude": "t_contemplation",
+		"group": "research"
+	},
+	{
+		"id": "buyscroll",
+		"name": "buy scroll",
+		"desc": "A novice can get by with very basic scrolls, hopefully you won't need any of the pricier ones.",
+		"require": "g.gold>=10",
+		"cost": {
+			"gold": 10
+		},
+		"fill": "scrolls",
+		"result": {
+			"scrolls": 1
+		},
+		"group": "materials"
+	},
+	{
+		"id": "scribescroll",
+		"name": "scribe scroll",
+		"tags": "t_craftwork",
+		"require": "g.crafting>=1&&g.lore>=1",
+		"cost": {
+			"research": 10,
+			"mana": 1
+		},
+		"fill": "scrolls",
+		"result": {
+			"scrolls": 1
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "bindcodex",
+		"name": "bind codex",
+		"tags": "t_craftwork",
+		"require": "g.research.max>=30&&g.crafting>=2&&g.lore>=1",
+		"cost": {
+			"scrolls": 10,
+			"research": 20,
+			"mana": 3
+		},
+		"fill": "codices",
+		"result": {
+			"codices": 1
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "craftrune",
+		"name": "craft rune",
+		"tags": "t_craftwork",
+		"require": "g.crafting>=14&&g.runelore>=1",
+		"need": "workspace",
+		"length": 10,
+		"cost": {
+			"tomes": 0.75,
+			"research": 300,
+			"managem": 4
+		},
+		"run": {
+			"stamina": 1,
+			"mana": 0.75
+		},
+		"fill": "runestones",
+		"result": {
+			"runestones": 1
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "chaosbag",
+		"name": "bag of mayhem",
+		"actname": "craft bag of mayhem",
+		"require": "g.t_chaosclass>0&&g.crafting>=20&&g.tier3>0&&g.chaosgem>=3",
+		"tags": "t_craftedbag",
+		"max": 1,
+		"length": 200,
+		"desc": "Badger, badger, badger, badger, why are there so many badgers in there???",
+		"cost": {
+			"gold": 1000,
+			"chaosgem": 3,
+			"arcana": 10
+		},
+		"run": {
+			"stamina": 2,
+			"chaos": 0.2
+		},
+		"mod": {
+			"chaosgem.max": 10,
+			"chaosrune.max": 5,
+			"animals.max": 2,
+			"allies.max": 10
+		},
+		"flavor": "And now there's a snake?",
+		"group": "storage"
+	},
+	{
+		"id": "timesiphon",
+		"name": "time siphon",
+		"perpetual": true,
+		"desc": "Draw back that which was lost.",
+		"require": "timegem",
+		"length": 10,
+		"cost": {
+			"timegem": 1
+		},
+		"effect": {
+			"hp": 10,
+			"offlinetime": 1,
+			"tempus": 2
+		},
+		"flavor": "If I could turn back time...",
+		"group": "crafting"
+	},
+	{
+		"id": "bestiary",
+		"actname": "compile bestiary",
+		"verb": "researching beasts",
+		"require": "g.animals>=3",
+		"length": 75,
+		"desc": "Compendium of common creatures.",
+		"max": 1,
+		"cost": {
+			"scrolls": 5
+		},
+		"run": {
+			"stamina": 0.5
+		},
+		"effect": {
+			"animals.exp": 2
+		},
+		"mod": {
+			"research.max": 10,
+			"animals.max": 2,
+			"animals.rate": 0.2
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "travelogue",
+		"actname": "compile travelogue",
+		"verb": "recording travels",
+		"require": "g.s_travel>0",
+		"length": 75,
+		"desc": "Chronicle the myriad strange sights of Dhrune.",
+		"max": 1,
+		"cost": {
+			"codices": 1
+		},
+		"run": {
+			"research": 1,
+			"stamina": 0.5
+		},
+		"effect": {
+			"s_travel.exp": 2
+		},
+		"mod": {
+			"encounter.effect.research": 1,
+			"encounter.effect.runner.skillprogress": 0.2,
+			"s_travel.rate": 0.5
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "bestiary2",
+		"name": "arcane bestiary",
+		"desc": "Compendium of magic creatures.",
+		"require": "g.loc_menagerie.locked==0",
+		"need": "loc_menagerie",
+		"max": 1,
+		"length": 500,
+		"cost": {
+			"tomes": 10,
+			"research": 2500,
+			"waterrune": 2,
+			"earthrune": 2
+		},
+		"run": {
+			"stamina": 1
+		},
+		"mod": {
+			"magicbeasts.max": 1,
+			"animals.max": 1,
+			"herbalism.max": 1
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "compiletome",
+		"name": "Compile Tome",
+		"tags": "t_craftwork",
+		"require": "g.lore.max>=9&&g.crafting>=7",
+		"length": 20,
+		"cost": {
+			"codices": 10,
+			"research": 100,
+			"mana": 10
+		},
+		"fill": "tomes",
+		"effect": {
+			"lore.exp": "g.lore.rate*0.2"
+		},
+		"run": {
+			"stamina": 0.7
+		},
+		"result": {
+			"tomes": 1
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "codexannih",
+		"name": "codex annihilus",
+		"require": "(g.t_shadowclass*5+g.t_swordclass*3+g.t_hammerclass*3)>=7",
+		"desc": "Karnivex's manual of destruction.",
+		"length": 75,
+		"max": 1,
+		"cost": {
+			"research": 400,
+			"codices": 10
+		},
+		"run": {
+			"research": 1,
+			"stamina": 2
+		},
+		"mod": {
+			"spelldmg": 5,
+			"physdmg": 5,
+			"player.tohit": 1
+		},
+		"flavor": "What he lacked in depth, Karnivex made up for with sheer destructive force.",
+		"group": "spellcasting"
+	},
+	{
+		"id": "cursedslab",
+		"name": "Cursed Slab",
+		"desc": "A peculiar obsidian slab you found in the Ruined Crypt, bearing blood-red sigils.",
+		"flavor": "A haunting echo asks to return it from off in the distance. You must be imagining things.",
+		"require": "g.ruinedcrypt.locked==0",
+		"need": "ruinedcrypt",
+		"max": 1,
+		"length": 50,
+		"cost": {
+			"scrolls": 25,
+			"shadowgem": 2,
+			"spiritgem": 2
+		},
+		"run": {
+			"stamina": 1.5
+		},
+		"mod": {
+			"spirit.rate": 0.1,
+			"shadow.rate": 0.1,
+			"arcana.max": 2,
+			"arcana.rate": 0.02
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "markhulcodex",
+		"name": "markhul's codex",
+		"desc": "A dusty codex from the genezereth library.",
+		"require": "g.genezereth.locked==0",
+		"need": "genezereth",
+		"max": 1,
+		"length": 75,
+		"cost": {
+			"codices": 5,
+			"managem": 10,
+			"research": 100
+		},
+		"run": {
+			"stamina": 2
+		},
+		"mod": {
+			"spellcraft.max": 1,
+			"spellcraft.rate": 0.5,
+			"arcana.max": 3,
+			"arcana.rate": 0.03
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "sylvansyllabary",
+		"name": "sylvan syllabary",
+		"desc": "A book of elvish symbols.",
+		"tags": "t_languagework",
+		"require": "g.languages>=5&&g.tier0>0",
+		"max": 1,
+		"length": 60,
+		"cost": {
+			"codices": 2
+		},
+		"run": {
+			"research": 1
+		},
+		"mod": {
+			"research.max": 10,
+			"languages.max": 1,
+			"languages.rate": 0.1,
+			"naturelore.max": 1,
+			"naturelore.rate": 0.1
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "dwarfbook",
+		"name": "dwarven dirges",
+		"desc": "A compilation of gloomy dwarven drinking songs.",
+		"flavor": "Through dungeons deep and caverns old...",
+		"tags": "t_languagework",
+		"require": "g.languages>=5&&g.tier0>0",
+		"max": 1,
+		"length": 60,
+		"cost": {
+			"codices": 2
+		},
+		"run": {
+			"research": 1
+		},
+		"mod": {
+			"research.max": 10,
+			"languages.max": 1,
+			"languages.rate": 0.1,
+			"crafting.max": 1,
+			"crafting.rate": 0.1
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "lemurlexicon",
+		"name": "lemurian lexicon",
+		"desc": "Interpret the strange whisperings of spirits.",
+		"tags": "t_languagework",
+		"require": "g.languages>=7&&g.spiritlore>=6&&g.tier0>0",
+		"max": 1,
+		"length": 50,
+		"cost": {
+			"codices": 2
+		},
+		"run": {
+			"research": 1
+		},
+		"mod": {
+			"research.max": 10,
+			"languages.max": 2,
+			"languages.rate": 0.2,
+			"spiritlore.max": 2,
+			"spiritlore.rate": 0.2
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "arazorannals",
+		"name": "annals of arazor",
+		"require": "g.aragwastes.locked==0",
+		"need": "aragwastes",
+		"desc": "A history of the eastern region of Arazor.",
+		"tags": "book",
+		"max": 1,
+		"length": 50,
+		"cost": {
+			"codices": 2
+		},
+		"run": {
+			"research": 1
+		},
+		"mod": {
+			"history.max": 1,
+			"history.rate": 0.1
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "orremannals",
+		"name": "annals of orrem",
+		"require": "g.loc_orrem.locked==0",
+		"need": "loc_orrem",
+		"desc": "A history of the lost cities of Orrem.",
+		"tags": "book",
+		"max": 1,
+		"length": 100,
+		"cost": {
+			"tomes": 10
+		},
+		"run": {
+			"research": 10
+		},
+		"mod": {
+			"history.max": 1,
+			"history.rate": 0.1,
+			"arcana.max": 10,
+			"arcana.rate": 0.05
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "malleus",
+		"name": "malleus maleficarum",
+		"actname": "compile witchhammer",
+		"require": "g.crafting>=15&&g.lightlore>=15",
+		"desc": "A manual against the darkness.",
+		"length": 50,
+		"max": 1,
+		"cost": {
+			"tomes": 5
+		},
+		"run": {
+			"research": 2,
+			"stamina": 2
+		},
+		"mod": {
+			"player.resist.shadow": 10,
+			"research.max": 20,
+			"spiritlore.max": 2,
+			"spiritlore.rate": 0.2,
+			"summoning.max": 2,
+			"summoning.rate": 0.2
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "terraform",
+		"name": "warp landscape",
+		"desc": "Improve the conditions of your local countryside.",
+		"verb": "terraforming",
+		"require": "geosculpting",
+		"length": 15,
+		"at": {
+			"10": {
+				"effect.gems.max": 0.0002,
+				"effect.prismaticgems.max": 0.0002
+			},
+			"50": {
+				"effect.earthgem": 0.01
+			},
+			"100": {
+				"effect.gems.max": 0.0002,
+				"effect.prismaticgems.max": 0.0002
+			},
+			"250": {
+				"effect.earthgem": 0.01
+			}
+		},
+		"run": {
+			"stamina": 1,
+			"earth": 1
+		},
+		"effect": {
+			"earthgem": 0.01,
+			"gems.max": 0.0002,
+			"prismaticgems.max": 0.0002
+		},
+		"mod": {
+			"geosculpting.max": "0.01//1400/-10",
+			"geosculpting.rate": "0.005//1400/-10"
+		},
+		"group": "storage"
+	},
+	{
+		"id": "remakehammer",
+		"name": "call hammer",
+		"desc": "You forged it once, call forth another.",
+		"need": "g.inv.max-g.inv._used>=1",
+		"needtext": "Must have at least 1 inventory space free.",
+		"verb": "Recalling",
+		"require": "g.maketitanhammer>0",
+		"length": 10,
+		"cost": {
+			"earthgem": 30,
+			"earthrune": 10,
+			"sindel": 1,
+			"deepsteel": 1
+		},
+		"run": {
+			"stamina": 8,
+			"earth": 5
+		},
+		"loot": {
+			"titanhammer": 1
+		},
+		"group": "weapon"
+	},
+	{
+		"id": "maketitanhammer",
+		"name": "titan's hammer",
+		"desc": "The powers of creation and destruction, locked in your grip.",
+		"need": "g.inv.max-g.inv._used>=1",
+		"needtext": "Must have at least 1 inventory space free.",
+		"max": 1,
+		"verb": "Creating Masterpiece",
+		"require": "g.titan>0&&g.mythicanvil>0&&g.deepsteel>=1",
+		"length": 180,
+		"cost": {
+			"earthgem": 300,
+			"earthrune": 20,
+			"ichor": 5,
+			"sindel": 5,
+			"deepsteel": 15
+		},
+		"run": {
+			"stamina": 4,
+			"earth": 3
+		},
+		"loot": {
+			"titanhammer": 1
+		},
+		"group": "weapon"
+	},
+	{
+		"id": "fazbitfixate",
+		"name": "fazbit's fixations",
+		"desc": "Scribe a copy of the seminal text in practical alchemy.",
+		"require": "g.fazbitshop.locked==0",
+		"need": "fazbitshop",
+		"length": 50,
+		"max": 1,
+		"cost": {
+			"codices": 2
+		},
+		"run": {
+			"research": 1,
+			"stamina": 1
+		},
+		"mod": {
+			"research.max": 10,
+			"alchemy.max": 2,
+			"alchemy.rate": 0.2,
+			"fire.max": 1,
+			"mana.max": 1,
+			"mana.rate": 0.1,
+			"arcana.max": 5,
+			"arcana.rate": 0.05
+		},
+		"flavor": "Corivar called Fazbit a mad crank, but tried to steal his manuals anyway.",
+		"group": "knowledge"
+	},
+	{
+		"id": "corporisfabrica",
+		"name": "corporis fabrica",
+		"require": "g.anatomy>=5",
+		"desc": "A manual of the human body.",
+		"tags": "book",
+		"length": 40,
+		"max": 1,
+		"cost": {
+			"codices": 2
+		},
+		"run": {
+			"research": 1
+		},
+		"mod": {
+			"research.max": 10,
+			"anatomy.max": 3,
+			"anatomy.rate": 0.6
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "unendingscroll",
+		"name": "unending scroll",
+		"require": "g.languages>=7",
+		"desc": "Some scrolls feel interminable.",
+		"length": 50,
+		"max": 1,
+		"cost": {
+			"scrolls": 15,
+			"mana": 7,
+			"gems": 10
+		},
+		"run": {
+			"research": 2,
+			"stamina": 3
+		},
+		"mod": {
+			"scrolls.rate": 0.02
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "unendingcodex",
+		"name": "unending codex",
+		"require": "g.unendingscroll>0&&g.tier1>0",
+		"desc": "Some books never seem to end.",
+		"length": 100,
+		"max": 1,
+		"cost": {
+			"codices": 5,
+			"mana": 10,
+			"gems": 20
+		},
+		"run": {
+			"research": 1,
+			"stamina": 3
+		},
+		"mod": {
+			"unendingscroll.mod.scrolls.rate.base": "50%",
+			"codices.rate": 0.01
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "unendingtome",
+		"name": "unending tome",
+		"require": "g.tier2>0&&g.unendingcodex>0",
+		"desc": "Some tomes are never finished.",
+		"length": 200,
+		"max": 1,
+		"cost": {
+			"tomes": 2,
+			"mana": 10,
+			"managem": 10
+		},
+		"run": {
+			"research": 2,
+			"stamina": 5
+		},
+		"mod": {
+			"unendingcodex.mod.codices.rate.base": "50%",
+			"tomes.rate": 0.005
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "almagest",
+		"desc": "Compile a manual of the sun and stars.",
+		"require": "g.astronomy>=7&&g.tier1>0",
+		"max": 1,
+		"length": 50,
+		"cost": {
+			"codices": 5
+		},
+		"run": {
+			"research": 1,
+			"scrolls": 0.1
+		},
+		"log": {
+			"name": "almagest",
+			"desc": "Your map of the heavens is complete."
+		},
+		"mod": {
+			"research.max": 50,
+			"divination": {
+				"max": 1,
+				"rate": 0.1
+			},
+			"lore": {
+				"max": 1,
+				"rate": 0.1
+			},
+			"astronomy": {
+				"max": 3,
+				"rate": "0.1+1%"
+			},
+			"planeslore": {
+				"max": 1,
+				"rate": 0.1
+			}
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "buygem",
+		"name": "purchase gem",
+		"require": "g.tier0>0&&g.gold>=100",
+		"cost": {
+			"gold": 100
+		},
+		"fill": "gems",
+		"result": {
+			"gems": 1
+		},
+		"group": "materials"
+	},
+	{
+		"id": "craftgem",
+		"name": "craft gem",
+		"tags": "t_craftwork",
+		"desc": "Craft a gem from raw minerals.",
+		"require": "g.crafting>=7&&g.alchemy>=5",
+		"length": 10,
+		"fill": "gems",
+		"run": {
+			"stamina": 1,
+			"mana": 2
+		},
+		"result": {
+			"gems": 1
+		},
+		"mod": {
+			"crafting.max": "0.01//300/-10"
+		},
+		"group": "crafting"
+	},
+	{
+		"id": "sellgem",
+		"name": "sell gem",
+		"require": "g.gems>0",
+		"cost": {
+			"gems": 1
+		},
+		"result": {
+			"gold": 35
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "imbuelifegem",
+		"name": "imbue gem (Nature)",
+		"school": "nature",
+		"require": "g.naturelore>=6&&g.enchanting>0",
+		"fill": "naturegem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"nature": 5
+		},
+		"result": {
+			"naturegem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbuemanagem",
+		"name": "imbue gem (Arcane)",
+		"school": "mana",
+		"require": "g.mana.max>=5&&g.enchanting>0",
+		"fill": "managem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"mana": 5
+		},
+		"result": {
+			"managem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbuechaosgem",
+		"name": "imbue gem (Chaos)",
+		"school": "chaos",
+		"require": "(g.chaoslore+g.t_chaosclass)>0&&g.enchanting>0",
+		"fill": "chaosgem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"chaos": 3
+		},
+		"result": {
+			"chaosgem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbuebloodgem",
+		"name": "coagulate gem (Blood)",
+		"school": "blood",
+		"require": "g.alchemy>=5&&g.anatomy>=5",
+		"need": "g.waterlore>0&&g.earthlore>0",
+		"fill": "bloodgem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"earth": 1,
+			"water": 1,
+			"hp": 20
+		},
+		"result": {
+			"bloodgem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbuefiregem",
+		"name": "imbue gem (Fire)",
+		"school": "fire",
+		"require": "g.firelore>=4&&g.enchanting>=3",
+		"fill": "firegem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"fire": 5
+		},
+		"result": {
+			"firegem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbueairgem",
+		"name": "imbue gem (Air)",
+		"school": "air",
+		"require": "g.airlore>=4&&g.enchanting>=3",
+		"fill": "airgem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"air": 5
+		},
+		"result": {
+			"airgem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbueearthgem",
+		"name": "imbue gem (earth)",
+		"school": "earth",
+		"require": "g.earthlore>=4&&g.enchanting>=3",
+		"fill": "earthgem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"earth": 5
+		},
+		"result": {
+			"earthgem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbuewatergem",
+		"name": "imbue gem (Water)",
+		"school": "water",
+		"require": "g.waterlore>=4&&g.enchanting>=3",
+		"fill": "watergem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"water": 5
+		},
+		"result": {
+			"watergem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbuelightgem",
+		"name": "imbue gem (Light)",
+		"school": "light",
+		"require": "g.lightlore>=4&&g.enchanting>=3",
+		"fill": "lightgem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"light": 5
+		},
+		"result": {
+			"lightgem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbueshadowgem",
+		"name": "imbue gem (Shadow)",
+		"school": "shadow",
+		"require": "g.shadowlore>=4&&g.enchanting>=3",
+		"fill": "shadowgem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"shadow": 5
+		},
+		"result": {
+			"shadowgem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "imbuespiritgem",
+		"name": "imbue gem (Spirit)",
+		"school": "spirit",
+		"require": "g.spirit.max>=4&&g.enchanting>=3",
+		"fill": "spiritgem",
+		"tags": "gemimbue,t_enchantment",
+		"cost": {
+			"gems": 1,
+			"spirit": 5
+		},
+		"result": {
+			"spiritgem": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "craftfirerune",
+		"name": "craft rune (Fire)",
+		"school": "fire",
+		"tags": "t_enchantment",
+		"require": "g.firelore>=10&&g.tier4>0",
+		"fill": "firerune",
+		"length": 10,
+		"cost": {
+			"runestones": 1,
+			"firegem": 10
+		},
+		"run": {
+			"stamina": 1
+		},
+		"result": {
+			"firerune": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "craftearthrune",
+		"name": "craft rune (Earth)",
+		"school": "earth",
+		"tags": "t_enchantment",
+		"require": "g.earthlore>=10&&g.tier4>0",
+		"fill": "earthrune",
+		"length": 10,
+		"cost": {
+			"runestones": 1,
+			"earthgem": 10
+		},
+		"run": {
+			"stamina": 1
+		},
+		"result": {
+			"earthrune": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "craftairrune",
+		"name": "craft rune (Air)",
+		"school": "air",
+		"tags": "t_enchantment",
+		"require": "g.airlore>=10&&g.tier4>0",
+		"fill": "airrune",
+		"length": 10,
+		"cost": {
+			"runestones": 1,
+			"airgem": 10
+		},
+		"run": {
+			"stamina": 1
+		},
+		"result": {
+			"airrune": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "craftwaterrune",
+		"name": "craft rune (Water)",
+		"school": "water",
+		"tags": "t_enchantment",
+		"require": "g.waterlore>=10&&g.tier4>0",
+		"fill": "waterrune",
+		"length": 10,
+		"cost": {
+			"runestones": 1,
+			"watergem": 10
+		},
+		"run": {
+			"stamina": 1
+		},
+		"result": {
+			"waterrune": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "craftspiritrune",
+		"name": "craft rune (Spirit)",
+		"school": "spirit",
+		"tags": "t_enchantment",
+		"require": "g.spirit.max>=999&&g.tier4>0",
+		"fill": "spiritrune",
+		"length": 10,
+		"cost": {
+			"runestones": 1,
+			"spiritgem": 10
+		},
+		"run": {
+			"stamina": 1
+		},
+		"result": {
+			"spiritrune": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "craftchaosrune",
+		"name": "craft rune (Chaos)",
+		"school": "chaos",
+		"tags": "t_enchantment",
+		"require": "(g.chaoslore+g.t_chaosclass)>0&&g.tier4>0",
+		"fill": "chaosrune",
+		"length": 10,
+		"cost": {
+			"runestones": 1,
+			"chaosgem": 10
+		},
+		"run": {
+			"stamina": 1
+		},
+		"result": {
+			"chaosrune": 1
+		},
+		"group": "imbuement"
+	},
+	{
+		"id": "sellscroll",
+		"name": "sell scroll",
+		"require": "g.scribescroll>0&&g.scrolls>=5",
+		"cost": {
+			"scrolls": 1
+		},
+		"result": {
+			"gold": 5
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "focus",
+		"desc": "Quicken your skills with magic energy.",
+		"require": "mana",
+		"need": "g.runner.hasType('skill')",
+		"cost": {
+			"mana": 0.02
+		},
+		"result": {
+			"runner.skillprogress": 0.02
+		}
+	},
+	{
+		"id": "grind",
+		"require": "g.lore>=6&&g.research.max<5",
+		"desc": "Experiment with magic to expand your research.",
+		"cost": {
+			"mana": 0.15
+		},
+		"result": {
+			"research.max": 0.05,
+			"research": 0.05
+		},
+		"group": "special"
+	},
+	{
+		"id": "animalfriend",
+		"name": "animal companion",
+		"require": "(g.druid+g.warden)>0",
+		"need": "outdoors",
+		"desc": "Create a magic link with a wild animal.",
+		"max": 1,
+		"length": 50,
+		"cost": {
+			"gold": 400,
+			"arcana": 2,
+			"research": 800
+		},
+		"mod": {
+			"animals.max": 2,
+			"animals.rate": 0.2,
+			"lore.max": 1,
+			"lore.rate": 0.1,
+			"naturelore.max": 2,
+			"naturelore.rate": 0.2
+		},
+		"group": "minions"
+	},
+	{
+		"id": "summonfamiliar",
+		"name": "summon familiar",
+		"desc": "Prepare a rite for summoning a familiar. The exact shape will be chosen after the fact.",
+		"group": "familliar",
+		"require": "g.animals>=5&&g.planeslore>=2&&g.summoning>=2",
+		"need": "summonsource",
+		"max": 1,
+		"length": 100,
+		"cost": {
+			"gold": 400,
+			"arcana": 3,
+			"gems": 10,
+			"research": 1000
+		}
+	},
+	{
+		"id": "petfamiliar",
+		"name": "pet familiar",
+		"desc": "Pet your familiar to calm your nerves.",
+		"require": "g.t_familiar>0",
+		"cd": 120,
+		"result": {}
+	},
+	{
+		"id": "planar_exploration",
+		"name": "planar exploration",
+		"desc": "Explore the connections between this plane and the others.",
+		"flavor": "Much like unraveling a spiderweb, it even includes the spider.",
+		"require": "g.gate>0",
+		"need": ["gate"],
+		"max": 3,
+		"length": 300,
+		"run": {
+			"tomes": 0.03,
+			"research": 5
+		},
+		"mod": {
+			"arcana.rate": 0.001,
+			"planeslore.max": 1,
+			"voidlore.max": 1,
+			"voidlore.rate": 0.2
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "makeamends",
+		"name": "make amends",
+		"desc": "Hard labor and charitable works can help cleanse the stain of prior evil acts.",
+		"verb": "making amends",
+		"need": "g.evilamt>0&&g.neophyte",
+		"length": 10,
+		"perpetual": true,
+		"tags": "t_goodact",
+		"at": {
+			"50": {
+				"run.stamina": 0.3,
+				"run.hp": 0.3,
+				"run.gold": 0.2,
+				"effect.evilamt": -0.4
+			},
+			"150": {
+				"run.stamina": 0.3,
+				"run.hp": 0.3,
+				"run.gold": 0.2,
+				"effect.evilamt": -0.4
+			}
+		},
+		"run": {
+			"stamina": 0.4,
+			"hp": 0.4,
+			"gold": 0.2
+		},
+		"effect": {
+			"evilamt": -0.4
+		}
+	},
+	{
+		"id": "securityconsultant",
+		"name": "security consultant",
+		"desc": "Hire out your services to patrons wishing to protect their wealth.",
+		"verb": "consulting",
+		"tags": "t_heist_act",
+		"require": "good3_trickster",
+		"length": 50,
+		"run": {
+			"stamina": 0.4,
+			"mana": 0.4,
+			"research": 1
+		},
+		"effect": {
+			"trickery.exp": "g.trickery.rate*0.2"
+		},
+		"result": {
+			"gems": "4~10",
+			"gold": 200
+		},
+		"mod": {
+			"trickery.max": "0.05//100/-10"
+		},
+		"group": "affluence"
+	},
+	{
+		"id": "gardenersalmanac",
+		"name": "gardener's almanac",
+		"require": "g.act_garden>=3000",
+		"desc": "Advice on properly tending your garden for maximum yields.",
+		"length": 75,
+		"max": 1,
+		"cost": {
+			"codices": 5
+		},
+		"run": {
+			"research": 1,
+			"nature": 2.5
+		},
+		"mod": {
+			"herbalism.max": 1,
+			"herbalism.rate": 0.1,
+			"naturelore.max": 2,
+			"naturelore.rate": 0.2,
+			"act_garden.effect.herbs": 0.1
+		},
+		"group": "knowledge"
+	},
+	{
+		"id": "decent1",
+		"name": "decent",
+		"morality": true,
+		"require": "g.decent==1",
+		"hide": true,
+		"desc": "You are turning out to be an upstanding spellcaster.",
+		"max": 1,
+		"mod": {
+			"light.rate": 0.1
+		},
+		"group": "morality"
+	}
+]
