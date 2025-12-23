@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
     const isProduction = mode === 'production';
     const isCloud = process.env.CLOUD === 'true';
 
-    const origins = ["'self'", "https://arcanumtesting.gitlab.io/"].join(" ");
+    const origins = ["'self'", "https://polip1337.github.io/NecroArcane/"].join(" ");
 
     const securityPolicies = [
         `default-src ${origins}`,
@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
 
     return {
 
-        base: isProduction ? 'arcanum' : undefined,
+        base: isProduction ? '/arcanum/' : undefined,
         plugins: [
             vue({
                 template: {
