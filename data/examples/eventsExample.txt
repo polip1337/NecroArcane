@@ -1,0 +1,77 @@
+{
+  // Unique identifier for the event. Required for all events.
+  "id": "example_event_id",
+  
+  // Display name of the event.
+  "name": "Example Event Name",
+  
+  // Requirement expression as a string (e.g., "g.scrolls>0" or complex like "(g.virtue-g.evilamt)>=90&&g.evilamt<=200&&g.virtue>=90").
+  "require": "g.example>=1&&g.another>0",
+  
+  // Description of the event.
+  "desc": "This is a comprehensive example event incorporating all possible fields from the provided events.json.",
+  
+  // Hide flag, boolean, to hide the event from display.
+  "hide": true,
+  
+  // Array of ids to disable upon event trigger.
+  "disable": ["example_disable1", "example_disable2"],
+  
+  // Array of ids to enable upon event trigger.
+  "enable": ["example_enable1", "example_enable2"],
+  
+  // Lock: String or potentially array of locks to apply (e.g., "t_job" or "heist").
+  "lock": "example_lock",
+  
+  // One-time results upon event trigger (object with assignments, can be booleans, numbers, or expressions like "securityconsultant": "g.heist").
+  "result": {
+    "humanoid_body": 1,
+    "arcana.rate": 0.0001,
+    "research.max": 10,
+    "player.exp": 10,
+    "player.tohit": 1,
+    "fame": 1,
+    "decent1": 1,
+    "respectable1": 1,
+    "good1": 1,
+    "immoral1": 1,
+    "wicked1": 1,
+    "evil1": 1,
+    "securityconsultant": "g.heist",
+    "innroom": true,
+    "rest": true,
+    "slumber": true,
+    "enchanted_study": 1,
+    "studyroom": "g.studyroom==0"
+  },
+  
+  // Modifications to game stats or other elements (object with key-value pairs, often numeric adjustments or settings).
+  "mod": {
+    "t_0": 1,  // Simple setting.
+    "t_1": 1,
+    "t_2": 1,
+    "t_3": 1,
+    "t_4": 1,
+    "t_5": 1,
+    "t_6": 1,
+    "mana.max": 5,  // Max adjustment.
+    "timesplit": 1,  // Increment or set.
+    "securityconsultant.result.gems.min": -4,  // Negative adjustment.
+    "securityconsultant.result.gems.max": -10,
+    "securityconsultant.result.gold": "-200-99.9%",
+    "palace.buy.gold": -2500,  // Cost adjustment.
+    "castle.buy.gold": -2500,
+    "home_idrasil_tree.buy.herbs": -25,
+    "home_idrasil_tree.buy.gems": -15,
+    "home_idrasil_sapling.buy.herbs": -25,
+    "home_idrasil_sapling.buy.gems": -15,
+    "cataract.buy.gold": -500,
+    "firelore.max": 1,  // Max lore adjustment.
+    "lightlore.max": 1,
+    "lore.max": 4,
+    "crafting.max": 2,
+    "arcanebody.max": 1,
+    "arcanebody2.max": 2,
+    "occultendure.max": 1,
+    "crystalmind.max": 1
+  }
